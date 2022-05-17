@@ -18,7 +18,7 @@ df=pd.json_normalize(data['data']['entries'])
 # setup db connection (generic connection path to be update with your credentials: 'postgresql://user:password@localhost:5432/mydatabase')
 # possible errors happen when the port or the password aren't updated with your laptop/database
 # make sure you have a databse called se4g and it has the postgis extension
-engine = create_engine('postgresql://postgres:flairspot1@localhost:5432/se4g')
+engine = create_engine('postgresql://postgres:admin@localhost:5432/se4g')
 
 # export the data frame into the databse
 df.to_sql('Housing Data', engine,if_exists='replace',index=False)
