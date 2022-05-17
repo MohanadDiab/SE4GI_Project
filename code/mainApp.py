@@ -3,9 +3,14 @@ from flask import (
     Flask,
     render_template,
     request,
+    session,
+    redirect,
+    url_for,
     )
 
 app=Flask(__name__,template_folder="templates")
+
+app.secret_key= b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route('/')
 def home():
