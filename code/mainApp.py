@@ -12,6 +12,7 @@ app=Flask(__name__,template_folder="templates")
 
 app.secret_key= b'_5#y2L"F4Q8z\n\xec]/'
 
+###
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -24,6 +25,7 @@ def viewMap():
 def viewMap2():
     return render_template('viewMap2.html')
 
+###
 @app.route('/reserveBike',methods=['GET','POST'])
 def reserveBike():
     if request.method=='POST':
@@ -34,6 +36,37 @@ def reserveBike():
 <p><input type=submit value=Ok>
 </form> '''
 
+###
+@app.route('/indeb')
+def indeb():
+    if 'username' in session:
+        return 'logged in as '+session['username']
+    return 'You are not logged in'
+@app.route('/login',methods=(['GET','POST']))
+def login():
+    if request.method=='POST':
+        session['username']=request.form['username']
+        return redirect(url_for('index'))
+    return '''
+        <form method="post">
+            <p><input type=text name=username>
+            <p><input type=submit value=Login>
+        </form>
+        '''
+@app.route('/logout')
+def logout():
+    session.pop('username',None)
+    return redirect(url_for('index'))
+
+###
+@app.route('/index')
+def index():
+    user={'username':'Miguel'}
+    posts=[
+        {'author':{'username':'John'},'body':'Beautiful day in Portland'},
+        {'author':{'username':'Susan'},'body':'The avengers movie was so cool'},
+        ]
+    return render_template('index2.html',title='Home',user=user,posts=posts)
 
 
 if __name__ == '__main__':
