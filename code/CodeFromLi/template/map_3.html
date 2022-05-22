@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-tag-filter-button@0.0.5/src/leaflet-tag-filter-button.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-tag-filter-button@0.0.5/src/leaflet-tag-filter-button.min.css">
+</head>
+
+<body style="margin:0">
+<div style="height: 100%; width: 100%" id="map"></div>
+<script>
+    var houseIcon = L.icon({
+        iconUrl: './static/img/house.svg',
+        iconSize: [25, 25],
+    });
+    var map = L.map('map').setView([-35.004615, 138.722005], 14);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    {% for item in result %}
+    L.marker([{{item[11]}}, {{item[12]}}],{icon:houseIcon,tags: ['{{item[5]}}']}).addTo(map)
+    {% endfor %}
+    L.control.tagFilterButton({
+        data: ['Town House', 'Single storey ','Apartment ','Semi-Detached ']
+    }).addTo( map );
+
+</script>
+</body>
+</html>
