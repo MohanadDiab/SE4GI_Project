@@ -1,49 +1,56 @@
-from psycopg2 import (connect)
-import pandas as pd
+from psycopg2 import(connect)
 
-###
-command="""
-    Create  TABLE test(
-        test_id SERIAL PRIMARY KEY,
-        test_name VARCHAR(255) NOT NULL,
-        num integer
-        )
-"""
+# setup db connection (generic connection path to the server Li setup)
+#hostname='104.168.68.237'
+#database='postgres'
+#username='postgres'
+#pwd='Always30Points'
+#port_id=5432
 
-###
-sqlInsert= """ 
-    INSERT INTO test(test_name, num)
-    VALUES(%s,%s) RETURNING test_id;
-"""
-
-sqlQuery= """SELECT * FROM test;"""
-
-###
+# connection on local databse
 hostname='localhost'
-database='Demo'
+database='se4g'
 username='postgres'
 pwd='flairspot1'
 port_id=5432
 
-conn = connect(
-    host=hostname,
-    dbname=database,
-    user=username,
-    password=pwd,
-    port=port_id
-    )
-cur = conn.cursor()
-cur.execute(command)
+conn = connect(host=hostname,database=database,user=username,password=pwd)
 
-for i in range(10):
-    name = input('insert a tuple name: ')
-    num = int(input('insert a number: '))
-    cur.execute(sqlInsert, (name, num))
-    test_id = cur.fetchone()[0]
-    print(test_id, '\n')
+
+if conn is None:
+    print ("Connection not established")
+else:
+    print ("Connection established")
+cur = conn.cursor()
+
+cleanup=(
+    'DROP TABLE IF EXISTS users CASCADE'
+    )
+
+command="""
+    CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    user_name VARCHAR(255) UNIQUE NOT NULL,
+    user_password VARCHAR(255) NOT NULL
+    )
+    """
     
-cur.execute(sqlQuery)
+
+sqlCommands=(
+    'INSERT INTO users (user_name, user_password) VALUES (%s, %s) RETURNING user_id'
+    )
+
+
+cur.execute(cleanup)
+    
+cur.execute(command)
+    
+cur.execute(sqlCommands, ('Giuseppe', '3ety3e7'))
+userId = cur.fetchone()[0]
 print(cur.fetchall())
 cur.close()
 conn.commit()
-conn.close()
+conn.close() 
+
+  
+    

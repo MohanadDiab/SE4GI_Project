@@ -8,17 +8,23 @@ from sqlalchemy import create_engine
 # Acquiring the data via HTTP request
 response=requests.get('https://five.epicollect.net/api/export/entries/housing-quality-index-crafers-aldgate-stirling?per_page=100')
 raw_data=response.text
-
+q
 # Converting the data into a readable JSON fromat
 data=json.loads(raw_data)
 
 # Transforming the JSON dataset into a Pandas data frame
 df=pd.json_normalize(data['data']['entries'])
 
-# setup db connection (generic connection path to be update with your credentials: 'postgresql://user:password@localhost:5432/mydatabase')
-# possible errors happen when the port or the password aren't updated with your laptop/database
-# make sure you have a databse called se4g and it has the postgis extension
-engine = create_engine('postgresql://postgres:flairspot1@localhost:5432/se4g')
+## cleaning the dataset
+df=df.drop(['7_Distance_to_shops'],axis=1)
+
+# setup db connection (generic connection path to the server Li setup: 'postgresql://user:password@localhost:5432/mydatabase')
+#hostname='104.168.68.237'
+#database='postgres'
+#username='postgres'
+#pwd='Always30Points'
+#port_id=5432
+engine = create_engine('postgresql://postgres:Always30Points@104.168.68.237:5432/postgres')
 
 # export the data frame into the databse
 df.to_sql('Housing Data', engine,if_exists='replace',index=False)
