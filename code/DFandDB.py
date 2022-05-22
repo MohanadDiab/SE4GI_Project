@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 # Acquiring the data via HTTP request
 response=requests.get('https://five.epicollect.net/api/export/entries/housing-quality-index-crafers-aldgate-stirling?per_page=100')
 raw_data=response.text
-q
+
 # Converting the data into a readable JSON fromat
 data=json.loads(raw_data)
 

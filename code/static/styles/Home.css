@@ -1,10 +1,19 @@
 .u-section-1 .u-sheet-1 {
-  height: 100vh;
+  height: middle;
 }
 
 .u-section-1 .u-layout-wrap-1 {
   margin-top: 60px;
   margin-bottom: 60px;
+}
+
+.flash {
+  
+  margin: auto;
+  height: 40px;
+  padding: 7px;
+  background: #cae6f6;
+  border: 1px solid #377ba8;
 }
 
 .u-section-1 .u-layout-cell-1 {

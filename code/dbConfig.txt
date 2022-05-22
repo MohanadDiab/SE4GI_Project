@@ -1,0 +1,3 @@
+dbname='se4g' user='postgres' password='flairspot1'
+
+
