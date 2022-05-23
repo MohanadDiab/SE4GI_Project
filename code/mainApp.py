@@ -50,7 +50,7 @@ def signIn():
         cur = conn.cursor()
         error = None
         cur.execute(
-            'SELECT * FROM blog_user WHERE user_name = %s', (username,)
+            'SELECT * FROM users WHERE user_name = %s', (username,)
         )
         user = cur.fetchone()
         cur.close()
@@ -65,10 +65,12 @@ def signIn():
             session.clear()
             session['user_id'] = user[0]
             return redirect(url_for('Home'))
+            
 
         flash(error)
 
     return render_template('signIn.html')
+    
 
 # sign up page
 @app.route('/signUp',methods=['GET','POST'])
@@ -95,6 +97,7 @@ def signUp():
                 cur.close()
         
         if error is None:
+            error='Account created successfully!'
             conn = get_dbConn()
             cur = conn.cursor()
             cur.execute(
@@ -103,6 +106,7 @@ def signUp():
             )
             cur.close()
             conn.commit()
+            flash(error)
             return redirect(url_for('signIn'))
         flash(error)
         

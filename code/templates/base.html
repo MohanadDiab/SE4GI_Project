@@ -1,29 +1,27 @@
-<!doctype html>
-<title>{% block title %}{% endblock %} - Blog WebApp</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
-<nav>
-  <h1><a href="/index">Blog WebApp</a></h1>
-
-    {% if g.user %}
-      Welcome {{ g.user[1] }}!
-      <ul>
-      <li><a href="/logout">Log Out</a></li>
-      </ul>
-    {% else %}
-  <ul>      
-      <li><a href="/register">Register</a>
-      <li><a href="/login">Log In</a>
-    {% endif %}
-  </ul>
+<!DOCTYPE html>
+<html style="font-size:16px;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - Realty</title>
+    {%block rel%}{%endblock%}
+</head>
+<nav class="u-grey-80">
+  <div class="u-nav-container">
+    <ul class="u-nav u-unstyled u-nav-1">
+      <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/" style="padding: 20px 20px;">Home</a>
+      </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="About.html" style="padding: 20px 20px;">About</a>
+      </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Contact.html" style="padding: 20px 20px;">Contact</a>
+      </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Home1.html" style="padding: 20px 20px;">Home1</a>
+    </li></ul>
+  </div>
 </nav>
-      <hr>
-<section class = "content">
-  <header>
-    {% block header %}{% endblock %}
-  </header>
-  {% for message in get_flashed_messages() %}
-    <div class = "flash">{{ message }}</div>
-  {% endfor %}
-  {% block content %}{% endblock %}
-</section>
+{%block body%}{%endblock%}
+
+<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-8405"><div class="u-clearfix u-sheet u-sheet-1">
+  <p class="u-small-text u-text u-text-variant u-text-1">© 2022 Realty, Milan/Italy <br> For technical support contact us at: Support@realty.it</p>
+</div></footer>
+</html>
+
 

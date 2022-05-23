@@ -1,58 +1,49 @@
-<!DOCTYPE html>
-<html style="font-size: 16px;">
-  <head>
-    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0">
-    <meta charset="utf-8">
-    <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/nicepage.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/Home.css') }}">
+{% extends 'base.html' %}
+
+{% block title %}Sign in{% endblock %}
+
+{% block rel %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/nicepage.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Home.css') }}" media="screen">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-  </head>
+{%endblock%}
+    
+    
+{% block body %}
   <body class="u-body u-xl-mode">
-    <section class="u-align-center u-clearfix u-section-1" id="carousel_3da2">
+    <section class="u-clearfix u-image u-section-1" id="carousel_d7f9" data-image-width="1280" data-image-height="853">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
-          <div class="u-layout">
-            <div class="u-layout-row">
-              <div class="u-align-left u-container-style u-layout-cell u-size-30 u-layout-cell-1">
-                <div class="u-container-layout u-valign-middle u-container-layout-1">
-                  <img class="u-image u-image-default u-image-1" src="../static/logo.png" alt="" data-image-width="540" data-image-height="308">
-                </div>
-              </div>
-              <div class="u-align-center u-container-style u-layout-cell u-palette-1-base u-radius-50 u-shape-round u-size-30 u-layout-cell-2">
-                <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-xl u-container-layout-2">
-                  <div class="u-form u-login-control u-radius-49 u-white u-form-1">
-                    <form method="POST" class="u-clearfix u-form-custom-backend u-form-spacing-40 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 40px;">
-                      {% for message in get_flashed_messages() %}
+        <div class="u-align-center u-container-style u-group u-radius-50 u-shape-round u-white u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <h2 class="u-text u-text-default u-text-1">Sign in</h2>
+            {% for message in get_flashed_messages() %}
                         <div class = "flash">{{ message }}</div>
-                      {% endfor %}
-                      <div data-image-height="10px">
-
-                      </div>
-
-                      <div class="u-form-group u-form-name">
-                        <label for="username-a30d" class="u-label">Username *</label>
-                        <input type="text" placeholder="Enter your Username" id="username-a30d" name="username" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-input-1" required="">
-                      </div>
-                      <div class="u-form-group u-form-password">
-                        <label for="password-a30d" class="u-label">Password *</label>
-                        <input type="text" placeholder="Enter your Password" id="password-a30d" name="password" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-input-2" required="">
-                      </div>
-
-                      <div class="u-align-left u-form-group u-form-submit">
-                        <input type=submit value=Login class="u-border-none u-btn u-btn-submit u-button-style u-palette-3-base u-btn-1">
-                      </div>
-                      <input type="hidden" value="" name="recaptchaResponse">
-                    </form>
-                  </div>
-                  <a href="/signUp" class="u-border-active-palette-2-base u-border-hover-palette-1-base u-border-none u-btn u-button-style u-login-control u-login-create-account u-none u-text-hover-white u-text-palette-3-base u-btn-2">Don't have an account?</a>
+            {% endfor %}
+            <div class="u-form u-form-1">
+              <form method="POST" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 0;" source="email" name="form">
+                
+                
+                <div class="u-form-group u-form-name">
+                  <label for="name-daf4" class="u-label">Username</label>
+                  <input type="text" placeholder="Enter your username" id="name-daf4" name="username" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required="" autofocus="autofocus">
                 </div>
-              </div>
+                <div class="u-form-email u-form-group">
+                  <label for="email-daf4" class="u-label">Password</label>
+                  <input type="text" placeholder="Enter your password" id="email-daf4" name="password" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required="">
+                </div>
+                <div class="u-align-left u-form-group u-form-submit">
+                  <input type=submit value="Sign in" class="u-active-palette-5-dark-2 u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-2 u-hover-palette-5-dark-2 u-radius-29 u-btn-1">
+                </div>
+                <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+                <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+                <input type="hidden" value="" name="recaptchaResponse">
+              </form>
             </div>
+            <a href="/signUp" class="u-text u-text-default u-text-2">Don't have an account?</a>
+
           </div>
         </div>
       </div>
-    </section>
-
-  </body>
-</html>
+    </section>   
+   </body>
+{%endblock%}
