@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_logged_in.html' %}
 
 {% block title %}Sign up{% endblock %}
 
@@ -20,6 +20,7 @@
           {% endfor %}
           <div class="u-form u-form-1">
             <a href="/" class="u-btn u-button-style u-palette-2-base u-btn-1">Go to home page</a>
+            <a href="/logout" class="u-btn u-button-style u-palette-2-base u-btn-1">Sign out</a>
           </div>
         </div>
       </div>

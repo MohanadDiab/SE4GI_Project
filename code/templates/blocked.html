@@ -1,4 +1,4 @@
-{% extends 'base_logged_in.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Sign in{% endblock %}
 
@@ -15,12 +15,15 @@
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-align-center u-container-style u-group u-radius-50 u-shape-round u-white u-group-1">
           <div class="u-container-layout u-container-layout-1">
-            <h2 class="u-text u-text-default u-text-1">Sign in</h2>
+            <img vertical-align:middle src="{{ url_for('static',filename='dont.png') }}" width="150" height="150" alt="oh no you don't">
+            <h2 class="u-text u-text-default u-text-1">Please sign in to view this page!</h2>
             {% for message in get_flashed_messages() %}
                         <div class = "flash">{{ message }}</div>
             {% endfor %}
             <div class="u-form u-form-1">
               <a href="/" class="u-btn u-button-style u-palette-2-base u-btn-1">Go to home page</a>
+              <a href="/signIn" class="u-btn u-button-style u-palette-2-base u-btn-1">Sign in</a>
+              <a href="/signUp" class="u-btn u-button-style u-palette-2-base u-btn-1">Sign up</a>
             </div>
           </div>
         </div>

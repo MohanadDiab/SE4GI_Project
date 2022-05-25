@@ -45,7 +45,11 @@ def close_dbConn():
 
 @app.route('/',methods=['GET'])
 def Home():
-    return render_template('Home.html')
+    if 'user_id' in session:
+        return render_template('Home_logged_in.html')
+    else:
+        return render_template('Home.html')
+    
 
 # Sign in page
 
@@ -157,34 +161,46 @@ def index():
 
 @app.route('/map_1')
 def map_1():
-    conn = get_dbConn()
-    cur = conn.cursor()
-    sql='select * from "Housing Data"'
-    cur.execute(sql)
-    result = cur.fetchall()
-    return render_template('map_1.html', title='Housing Data Display', result=result)
+    if 'user_id' in session:
+        conn = get_dbConn()
+        cur = conn.cursor()
+        sql='select * from "Housing Data"'
+        cur.execute(sql)
+        result = cur.fetchall()
+        return render_template('map_1.html', title='Housing Data Display', result=result)
+    else:
+        return render_template('blocked.html')
+    
 
 # Normal map function
 
 @app.route('/map_2')
 def map_2():
-    conn = get_dbConn()
-    cur = conn.cursor()
-    sql='select "1_Location.latitude","1_Location.longitude","6_Decibel_reading" from "Housing Data"'
-    cur.execute(sql)
-    result = cur.fetchall()
-    return render_template('map_2.html', title='Housing Data Display', result=result,resultLength=len(result))
+    if 'user_id' in session:
+        conn = get_dbConn()
+        cur = conn.cursor()
+        sql='select "1_Location.latitude","1_Location.longitude","6_Decibel_reading" from "Housing Data"'
+        cur.execute(sql)
+        result = cur.fetchall()
+        return render_template('map_2.html', title='Housing Data Display', result=result,resultLength=len(result))
+    else:
+        return render_template('blocked.html')
+    
 
 # Normal map function
 
 @app.route('/map_3')
 def map_3():
-    conn = get_dbConn()
-    cur = conn.cursor()
-    sql='select * from "Housing Data"'
-    cur.execute(sql)
-    result = cur.fetchall()
-    return render_template('map_3.html', title='Housing Data Display', result=result)
+    if 'user_id' in session:
+        conn = get_dbConn()
+        cur = conn.cursor()
+        sql='select * from "Housing Data"'
+        cur.execute(sql)
+        result = cur.fetchall()
+        return render_template('map_3.html', title='Housing Data Display', result=result)
+    else:
+        return render_template('blocked.html')
+   
 
 
 
