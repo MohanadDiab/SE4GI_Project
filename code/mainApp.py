@@ -113,5 +113,56 @@ def signUp():
     return render_template('signUp.html')
 
 
+<<<<<<< Updated upstream
 if __name__ == '__main__':
     app.run(debug=True)
+=======
+# Sign out function
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('signIn'))
+
+### Normal user section ###
+## Maps functions ##
+
+# Normal map function
+
+@app.route('/map_1')
+def map_1():
+    conn = get_dbConn()
+    cur = conn.cursor()
+    sql='select * from "Housing Data"'
+    cur.execute(sql)
+    result = cur.fetchall()
+    return render_template('map_1.html', title='Housing Data Display', result=result)
+
+# Normal map function
+
+@app.route('/map_2')
+def map_2():
+    conn = get_dbConn()
+    cur = conn.cursor()
+    sql='select "1_Location.latitude","1_Location.longitude","6_Decibel_reading" from "Housing Data"'
+    cur.execute(sql)
+    result = cur.fetchall()
+    return render_template('map_2.html', title='Housing Data Display', result=result,resultLength=len(result))
+
+# Normal map function
+
+@app.route('/map_3')
+def map_3():
+    conn = get_dbConn()
+    cur = conn.cursor()
+    sql='select * from "Housing Data"'
+    cur.execute(sql)
+    result = cur.fetchall()
+    return render_template('map_3.html', title='Housing Data Display', result=result)
+
+
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run(port=80)
+>>>>>>> Stashed changes

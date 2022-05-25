@@ -1,6 +1,8 @@
-<html>
-<head>
-    <title>{{ title }}</title>
+{% extends 'base.html' %}
+
+{% block title %}Map Filter{% endblock %}
+
+{% block rel %}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
           crossorigin=""/>
@@ -12,10 +14,15 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet-tag-filter-button@0.0.5/src/leaflet-tag-filter-button.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-tag-filter-button@0.0.5/src/leaflet-tag-filter-button.min.css">
-</head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/nicepage.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Sign.css') }}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
+    {%endblock%}
+
+{% block body %}
 <body style="margin:0">
-<div style="height: 100%; width: 100%" id="map"></div>
+<div style="height: 100vh; width: 100vw" id="map"></div>
 <script>
     var houseIcon = L.icon({
         iconUrl: './static/img/house.svg',
@@ -34,4 +41,4 @@
 
 </script>
 </body>
-</html>
+{%endblock%}
