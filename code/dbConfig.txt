@@ -1,3 +1,1 @@
-dbname='se4g' user='postgres' password='flairspot1'
-
-
+database="postgres", user="postgres", password="Always30Points", host="104.168.68.237", port="5432"

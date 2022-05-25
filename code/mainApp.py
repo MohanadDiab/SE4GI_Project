@@ -10,6 +10,8 @@ from psycopg2 import (
         connect
 )
 
+import json
+
 # setup db connection (generic connection path to the server Li setup)
 #hostname='104.168.68.237'
 #database='postgres'
@@ -26,7 +28,7 @@ def get_dbConn():
     if 'dbConn' not in g:
         myFile = open('dbConfig.txt')
         connStr = myFile.readline()
-        g.dbConn = connect(connStr)
+        g.dbConn = connect(database="postgres", user="postgres", password="Always30Points", host="104.168.68.237", port="5432")
     
     return g.dbConn
 
@@ -35,12 +37,18 @@ def close_dbConn():
         g.dbComm.close()
         g.pop('dbConn')
 
+
+### Guest section ###
+## home page, login, logout, sign up ##
+
 # Welcome page (get started)
+
 @app.route('/',methods=['GET'])
 def Home():
     return render_template('Home.html')
 
 # Sign in page
+
 @app.route('/signIn',methods=['GET','POST'])
 def signIn():
     if request.method == 'POST':
@@ -63,16 +71,17 @@ def signIn():
 
         if error is None:
             session.clear()
-            session['user_id'] = user[0]
-            return redirect(url_for('Home'))
+            session['user_id'] = user[1]
+            
+            return 'welcome '+session['user_id']#redirect(url_for('Home')) 
             
 
         flash(error)
 
     return render_template('signIn.html')
-    
 
 # sign up page
+
 @app.route('/signUp',methods=['GET','POST'])
 def signUp():
     if request.method=='POST':
@@ -113,5 +122,51 @@ def signUp():
     return render_template('signUp.html')
 
 
+# Sign out function
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('signIn'))
+
+### Normal user section ###
+## Maps functions ##
+
+# Normal map function
+
+@app.route('/map_1')
+def map_1():
+    conn = get_dbConn()
+    cur = conn.cursor()
+    sql='select * from "Housing Data"'
+    cur.execute(sql)
+    result = cur.fetchall()
+    return render_template('map_1.html', title='Housing Data Display', result=result)
+
+# Normal map function
+
+@app.route('/map_2')
+def map_2():
+    conn = get_dbConn()
+    cur = conn.cursor()
+    sql='select "1_Location.latitude","1_Location.longitude","6_Decibel_reading" from "Housing Data"'
+    cur.execute(sql)
+    result = cur.fetchall()
+    return render_template('map_2.html', title='Housing Data Display', result=result,resultLength=len(result))
+
+# Normal map function
+
+@app.route('/map_3')
+def map_3():
+    conn = get_dbConn()
+    cur = conn.cursor()
+    sql='select * from "Housing Data"'
+    cur.execute(sql)
+    result = cur.fetchall()
+    return render_template('map_3.html', title='Housing Data Display', result=result)
+
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.debug = True
+    app.run(port=80)
