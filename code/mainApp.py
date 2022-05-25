@@ -71,8 +71,9 @@ def signIn():
 
         if error is None:
             session.clear()
-            session['user_id'] = user[0]
-            return redirect(url_for('Home'))
+            session['user_id'] = user[1]
+            
+            return 'welcome '+session['user_id']#redirect(url_for('Home')) 
             
 
         flash(error)
@@ -126,7 +127,7 @@ def signUp():
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('/'))
+    return redirect(url_for('signIn'))
 
 ### Normal user section ###
 ## Maps functions ##
@@ -168,4 +169,4 @@ def map_3():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host="0.0.0.0", port=80)
+    app.run(port=80)
