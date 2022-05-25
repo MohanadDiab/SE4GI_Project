@@ -1,7 +1,6 @@
-{% extends 'base.html' %}
-
-{% block title %}Heat Map{% endblock %}
-{% block rel %}
+<html>
+<head>
+    <title>{{ title }}</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
           crossorigin=""/>
@@ -11,15 +10,10 @@
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="./static/js/heatmap.min.js"></script>
     <script src="./static/js/leaflet-heatmap.js"></script>
-    <link rel="stylesheet" href="{{ url_for('static',filename='styles/nicepage.css') }}" media="screen">
-    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Sign.css') }}" media="screen">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+</head>
 
-    {%endblock%}
-
-{% block body %}
 <body style="margin:0">
-<div style="height: 100vh; width: 100vw" id="map"></div>
+<div style="height: 100%; width: 100%" id="map"></div>
 <script>
     var houseIcon = L.icon({
         iconUrl: './static/img/house.svg',
@@ -63,4 +57,4 @@
     heatmapLayer.setData(testData);
 </script>
 </body>
-{%endblock%}
+</html>
