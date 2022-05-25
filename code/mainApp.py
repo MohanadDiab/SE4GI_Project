@@ -154,6 +154,13 @@ def index():
     else:
         return 'not logged in'
 
+@app.route('/about')
+def about():
+    if 'user_id' in session:
+        return  render_template('about_logged_in.html')
+    else:
+        return render_template('about.html')
+    
 ### Normal user section ###
 ## Maps functions ##
 
