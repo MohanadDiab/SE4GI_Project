@@ -51,83 +51,104 @@ def Home():
 
 @app.route('/signIn',methods=['GET','POST'])
 def signIn():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        conn = get_dbConn()
-        cur = conn.cursor()
-        error = None
-        cur.execute(
-            'SELECT * FROM users WHERE user_name = %s', (username,)
-        )
-        user = cur.fetchone()
-        cur.close()
-        conn.commit()
-
-        if user is None:
-            error = 'Incorrect username.'
-        elif not check_password_hash(user[2], password):
-            error = 'Incorrect password.'
-
-        if error is None:
-            session.clear()
-            session['user_id'] = user[1]
-            
-            return 'welcome '+session['user_id']#redirect(url_for('Home')) 
-            
-
+    if 'user_id' in session:
+        error='You are already signed in!'
         flash(error)
+        return render_template('signIn_ex.html')
+    else:
+        if request.method == 'POST':
+            username = request.form['username']
+            password = request.form['password']
+            conn = get_dbConn()
+            cur = conn.cursor()
+            error = None
+            cur.execute(
+                'SELECT * FROM users WHERE user_name = %s', (username,)
+            )
+            user = cur.fetchone()
+            cur.close()
+            conn.commit()
 
-    return render_template('signIn.html')
+            if user is None:
+                error = 'Incorrect username.'
+            elif not check_password_hash(user[2], password):
+                error = 'Incorrect password.'
+
+            if error is None:
+                session.clear()
+                session['user_id'] = user[1]
+                
+                return redirect(url_for('map_1')) 
+                
+
+            flash(error)
+
+        return render_template('signIn.html')
 
 # sign up page
 
 @app.route('/signUp',methods=['GET','POST'])
 def signUp():
-    if request.method=='POST':
-        username=request.form['username']
-        password=request.form['password']
-        repassword=request.form['repassword']
-        error = None
-        
-        if not username:
-            error = 'Username is required.'
-        elif not password:
-            error = 'Password is required.'
-        elif repassword != password:
-            error= 'Passwords do not match'
-        else :
-            conn = get_dbConn()
-            cur = conn.cursor()
-            cur.execute(
-            'SELECT user_id FROM users WHERE user_name = %s', (username,))
-            if cur.fetchone() is not None:
-                error = 'Username {} is already taken.'.format(username)
-                cur.close()
-        
-        if error is None:
-            error='Account created successfully!'
-            conn = get_dbConn()
-            cur = conn.cursor()
-            cur.execute(
-                'INSERT INTO users (user_name, user_password) VALUES (%s, %s)',
-                (username, generate_password_hash(password))
-            )
-            cur.close()
-            conn.commit()
-            flash(error)
-            return redirect(url_for('signIn'))
+    if 'user_id' in session:
+        error='You are already signed in!, You can sign up a new account when you sign out!'
         flash(error)
-        
-    return render_template('signUp.html')
-
-
+        return render_template('signUp_ex.html')
+    else:
+        if request.method=='POST':
+            username=request.form['username']
+            password=request.form['password']
+            repassword=request.form['repassword']
+            error = None
+            
+            if not username:
+                error = 'Username is required.'
+            elif not password:
+                error = 'Password is required.'
+            elif repassword != password:
+                error= 'Passwords do not match'
+            else :
+                conn = get_dbConn()
+                cur = conn.cursor()
+                cur.execute(
+                'SELECT user_id FROM users WHERE user_name = %s', (username,))
+                if cur.fetchone() is not None:
+                    error = 'Username {} is already taken.'.format(username)
+                    cur.close()
+            
+            if error is None:
+                error='Account created successfully!'
+                conn = get_dbConn()
+                cur = conn.cursor()
+                cur.execute(
+                    'INSERT INTO users (user_name, user_password) VALUES (%s, %s)',
+                    (username, generate_password_hash(password))
+                )
+                cur.close()
+                conn.commit()
+                flash(error)
+                return redirect(url_for('signIn'))
+            flash(error)
+            
+        return render_template('signUp.html')
 # Sign out function
 
 @app.route('/logout')
 def logout():
-    session.clear()
+    if 'user_id' in session:
+        session.clear()
+        error='logged out seccessfully'
+        flash(error)
+    else:
+        error='You were not logged in'
+        flash(error)
     return redirect(url_for('signIn'))
+
+@app.route('/index')
+def index():
+    if 'user_id' in session:
+        return 'hello '+session['user_id']
+    else:
+        return 'not logged in'
 
 ### Normal user section ###
 ## Maps functions ##
