@@ -82,7 +82,7 @@ def signIn():
                 session.clear()
                 session['user_id'] = user[1]
                 
-                return redirect(url_for('map_1')) 
+                return redirect(url_for('maps')) 
                 
 
             flash(error)
@@ -164,6 +164,13 @@ def about():
 ### Normal user section ###
 ## Maps functions ##
 
+@app.route('/maps')
+def maps():
+    if 'user_id' in session:
+        return render_template('maps.html')
+    else:
+        return render_template('blocked.html')
+
 # Normal map function
 
 @app.route('/map_1')
@@ -210,7 +217,6 @@ def map_3():
    
 
 
-
 if __name__ == '__main__':
     app.debug = True
-    app.run(port=80)
+    app.run()

@@ -1,0 +1,49 @@
+{% extends 'base_logged_in.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block rel %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/nicepage_maps.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/maps.css') }}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+{%endblock%}
+
+{% block body %}
+<body class="u-body u-xl-mode">
+<section class="u-clearfix u-section-1" id="sec-30a3">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <div class="u-expanded-width u-list u-list-1">
+      <div class="u-repeater u-repeater-1">
+        <div class="u-container-style u-list-item u-repeater-item">
+          <div class="u-container-layout u-similar-container u-container-layout-1">
+            <img alt="" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="2000" data-image-height="1333" src="{{ url_for('static',filename='map1.jpg') }}">
+            <h3 class="u-text u-text-default u-text-1">Info Map</h3>
+            <p class="u-text u-text-2">A map that displays the housings' location. <br> Clicking on a house icon will display the housings meta details and an image.</p>
+            <a href="/map_1" class="u-active-none u-border-2 u-border-hover-palette-2-base u-border-palette-2-light-1 u-btn u-button-style u-hover-none u-none u-text-body-color u-btn-1">View map</a>
+          </div>
+        </div>
+        <div class="u-container-style u-list-item u-repeater-item">
+          <div class="u-container-layout u-similar-container u-container-layout-2">
+            <img alt="" class="u-expanded-width u-image u-image-default u-image-2" data-image-width="2000" data-image-height="1333" src="{{ url_for('static',filename='map2.jpg') }}">
+            <h3 class="u-text u-text-default u-text-3">Heat map</h3>
+            <p class="u-text u-text-4">A map that displays the heatmap of the area. <br> The heatmap is based on the decibel readings which is a "noise measure" to evaluate the quietness of a neighbourhood.</p>
+            <a href="map_2" class="u-active-none u-border-2 u-border-hover-palette-2-base u-border-palette-2-light-1 u-btn u-button-style u-hover-none u-none u-text-body-color u-btn-2">View map</a>
+          </div>
+        </div>
+        <div class="u-container-style u-list-item u-repeater-item">
+          <div class="u-container-layout u-similar-container u-container-layout-3">
+            <img alt="" class="u-expanded-width u-image u-image-default u-image-3" data-image-width="2000" data-image-height="1333" src="{{ url_for('static',filename='map3.jpg') }}">
+            <h3 class="u-text u-text-default u-text-5">Filter Map</h3>
+            <p class="u-text u-text-6">A map that displays housings based on a filter. <br> The map displays the housing based on a chosen filter and displays the number of the housings in that specific filter.</p>
+            <a href="map_3" class="u-active-none u-border-2 u-border-hover-palette-2-base u-border-palette-2-light-1 u-btn u-button-style u-hover-none u-none u-text-body-color u-btn-3">View map</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+{%endblock%}
+
+
+
