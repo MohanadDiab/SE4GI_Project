@@ -1,0 +1,41 @@
+{% extends 'base_logged_in.html' %}
+
+{% block title %}Map{% endblock %}
+
+{% block rel %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/nicepage.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Sign.css') }}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+    {%endblock%}
+    {% block body %}
+<body style="margin:0">
+<div style="height: 100vh; width: 100vw" id="map"></div>
+<script>
+    var map = L.map('map').setView([-35.004615, 138.722005], 14);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    {% for item in result %}
+        var name = '{{item[5]}}';
+    name = name.trim();
+    L.marker([{{item[11]}}, {{item[12]}}],{icon:L.icon({iconUrl: './static/img/'+name+'.svg',iconSize: [25, 25],})}).addTo(map)
+        .bindPopup('Housing type:<b>{{item[5]}}</b><br>Number of trees:<b>{{item[6]}}</b><br>Distance to major road:<b>{{item[7]}}</b><br>Decibel reading:<b>{{item[8]}}</b><br>Age of property:<b>{{item[9]}}</b><br>Quality of house:<b>'+("{{item[10]}}"=="-1"?'Calculating...':"{{item[10]}}")+'</b><br>Picture of house:<br><img style="width: 250px" src="{{item[4]}}" >')
+        .openPopup();
+    {% endfor %}
+    map.on('click', function(e){
+        console.log(e.latlng)
+        L.marker([e.latlng.lat,e.latlng.lng]).addTo(map)
+            .bindPopup('<form method="post" action="/submitData" enctype="multipart/form-data"><input type="hidden" name="lat" value="'+e.latlng.lat+'"><input type="hidden" name="lng" value="'+e.latlng.lng+'">Housing type:<select name="ht"><option>Semi-Detached</option><option>Apartment</option><option>Single storey</option><option>Town House</option></select><br>Number of trees:<select name="not"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>5+</option></select><br>Distance to major road:<select name="d2mr"><option>100 metres or less</option><option>200 m</option><option>300 m</option><option>400 m</option><option>400 m +</option></select><br>Decibel reading:<input type="text" name="dr"><br>Age of property:<select name="aop"><option>1900s Below</option><option>1910s (Old style)</option><option>1920s</option><option>1930s</option><option>1940-1960s</option><option>1970s</option><option>1980s</option><option>1990s</option><option>2000s</option><option>2010 + Modern</option></select><br>Picture of house:<br> <input type="file" name="photo"><br><button type="submit">submit</button></form>')
+            .openPopup();
+    });
+</script>
+</body>
+{%endblock%}

@@ -22,17 +22,14 @@
 <body style="margin:0">
 <div style="height: 100vh; width: 100vw" id="map"></div>
 <script>
-    var houseIcon = L.icon({
-        iconUrl: './static/img/house.svg',
-        iconSize: [25, 25],
-    });
     var map = L.map('map').setView([-35.004615, 138.722005], 14);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
     {% for item in result %}
-    L.marker([{{item[11]}}, {{item[12]}}],{icon:houseIcon,tags: ['{{item[5]}}']}).addTo(map)
-    {% endfor %}
+    var name = '{{item[5]}}';
+    name = name.trim();
+    L.marker([{{item[11]}}, {{item[12]}}],{icon:L.icon({iconUrl: './static/img/'+name+'.svg',iconSize: [25, 25],})}).addTo(map)    {% endfor %}
     L.control.tagFilterButton({
         data: ['Town House', 'Single storey ','Apartment ','Semi-Detached ']
     }).addTo( map );
