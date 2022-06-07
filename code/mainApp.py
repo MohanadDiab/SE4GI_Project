@@ -33,8 +33,7 @@ def get_dbConn():
     if 'dbConn' not in g:
         myFile = open('dbConfig.txt')
         connStr = myFile.readline()
-        g.dbConn = connect(database="postgres", user="postgres", password="Always30Points", host="104.168.68.237",
-                           port="5432")
+        g.dbConn = connect(database="postgres", user="postgres", password="Always30Points", host="104.168.68.237",port="5432")
 
     return g.dbConn
 
