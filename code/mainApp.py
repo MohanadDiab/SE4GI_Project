@@ -211,6 +211,8 @@ def changepw():
 
             if not check_password_hash(user[2], oldPassword):
                 error = 'Incorrect password.'
+            elif ' ' in newPassword:
+                error = 'Password cannot contain spaces, use underscore instead'
             elif reNewPassword != newPassword:
                 error= 'Passwords do not match'
             elif len(newPassword) < 5:
