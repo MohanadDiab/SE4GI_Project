@@ -16,7 +16,7 @@ data=json.loads(raw_data)
 df=pd.json_normalize(data['data']['entries'])
 
 ## cleaning the dataset
-df=df.drop(['7_Distance_to_shops'],axis=1)
+# df=df.drop(['7_Distance_to_shops'],axis=1)
 
 # setup db connection (generic connection path to the server Li setup: 'postgresql://user:password@localhost:5432/mydatabase')
 #hostname='104.168.68.237'

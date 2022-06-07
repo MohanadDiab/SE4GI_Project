@@ -1,0 +1,52 @@
+{% extends 'base_logged_in.html' %}
+
+{% block title %}Change Password{% endblock %}
+
+{% block rel %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/nicepage.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Home.css') }}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+{%endblock%}
+
+{%block body%}
+<body class="u-body u-xl-mode">
+  <section class="u-clearfix u-image u-section-1" id="carousel_d7f9" data-image-width="1280" data-image-height="853">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-align-center u-container-style u-group u-radius-50 u-shape-round u-white u-group-1">
+        <div class="u-container-layout u-container-layout-1">
+          <h2 class="u-text u-text-default u-text-1">Change password</h2>
+            {% for message in get_flashed_messages() %}
+                      <p class = "flash">{{ message }}</p>
+            {% endfor %}
+          <div class="u-form u-form-1">
+            <form method="POST" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 0;" source="email" name="form">
+              
+              <div class="u-form-group u-form-name">
+                <label for="name-daf4" class="u-label">Old Password</label>
+                <input type="text" placeholder="Enter your old password" id="name-daf4" name="oldPassword" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required="" autofocus="autofocus">
+              </div>
+              <div class="u-form-email u-form-group">
+                <label for="email-daf4" class="u-label">New Password</label>
+                <input type="text" placeholder="Enter your new password" id="email-daf4" name="newPassword" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required="">
+              </div>
+              <div class="u-form-email u-form-group">
+                <label for="email-daf4" class="u-label">Re-enter new Password</label>
+                <input type="text" placeholder="Enter your new password" id="email-daf4" name="reNewPassword" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required="">
+              </div>
+              <div class="u-align-left u-form-group u-form-submit">
+                <input type=submit value="Change password" class="u-active-palette-5-dark-2 u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-2 u-hover-palette-5-dark-2 u-radius-29 u-btn-1">
+              </div>
+              <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+              <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+              <input type="hidden" value="" name="recaptchaResponse">
+            </form>
+          </div>
+          <a href="/profile" class="u-text u-text-default u-text-2">Back to my profile page</a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+</body>
+{%endblock%}

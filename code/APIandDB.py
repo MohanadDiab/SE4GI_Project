@@ -8,13 +8,7 @@ from psycopg2 import(connect)
 #port_id=5432
 
 # connection on local databse
-hostname='localhost'
-database='se4g'
-username='postgres'
-pwd='flairspot1'
-port_id=5432
-
-conn = connect(host=hostname,database=database,user=username,password=pwd)
+conn = connect(database="postgres", user="postgres", password="Always30Points", host="104.168.68.237", port="5432")
 
 
 if conn is None:

@@ -110,6 +110,8 @@ def signUp():
                 error = 'Password is required.'
             elif repassword != password:
                 error= 'Passwords do not match'
+            elif len(password) < 5:
+                    error = 'Password should be at least 5 characters long'
             else :
                 conn = get_dbConn()
                 cur = conn.cursor()
@@ -162,6 +164,58 @@ def about():
         return render_template('about.html')
     
 ### Normal user section ###
+
+## Profile section ##
+
+@app.route('/profile')
+def profile():
+    if 'user_id' in session:
+        return render_template('profile.html',user_name=session['user_id'])
+    else:
+        return render_template('blocked.html')
+    
+@app.route('/changepw',methods=['GET','POST'])
+def changepw():
+    if 'user_id' in session:
+        if request.method == 'POST':
+            oldPassword = request.form['oldPassword']
+            newPassword = request.form['newPassword']
+            reNewPassword=request.form['reNewPassword']
+            conn = get_dbConn()
+            cur = conn.cursor()
+            error = None
+            cur.execute(
+                'SELECT * FROM users WHERE user_name = %s', (session['user_id'],)
+            )
+            user = cur.fetchone()
+            cur.close()
+            conn.commit()
+
+            if not check_password_hash(user[2], oldPassword):
+                error = 'Incorrect password.'
+            elif reNewPassword != newPassword:
+                error= 'Passwords do not match'
+            elif len(newPassword) < 5:
+                    error = 'Password should be at least 5 characters long'
+
+            if error is None:
+                conn = get_dbConn()
+                cur = conn.cursor()
+                error = 'Password changed successfully'
+                cur.execute(
+                    'UPDATE users SET user_password=%s WHERE user_name = %s', (generate_password_hash(newPassword),session['user_id'],)
+                )
+                cur.close()
+                conn.commit()
+                flash(error)
+                return redirect(url_for('changepw')) 
+                
+            flash(error)
+
+        return render_template('changepw.html')
+    else:
+        return render_template('blocked.html')
+
 ## Maps functions ##
 
 @app.route('/maps')
