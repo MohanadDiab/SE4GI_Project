@@ -122,15 +122,11 @@ def signUp():
             elif ' ' in password:
                 error = 'Password cannot contain spaces, use underscore instead'
             elif repassword != password:
-<<<<<<< Updated upstream
+
                 error= 'Passwords do not match'
             elif len(password) < 5:
                     error = 'Password should be at least 5 characters long'
-            else :
-=======
-                error = 'Passwords do not match'
             else:
->>>>>>> Stashed changes
                 conn = get_dbConn()
                 cur = conn.cursor()
                 cur.execute(
