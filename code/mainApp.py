@@ -112,6 +112,8 @@ def signUp():
                 error = 'Uername cannot contain spaces, use underscore instead'
             elif not password:
                 error = 'Password is required.'
+            elif ' ' in password:
+                error = 'Password cannot contain spaces, use underscore instead'
             elif repassword != password:
                 error= 'Passwords do not match'
             elif len(password) < 5:
