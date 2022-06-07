@@ -108,7 +108,7 @@ def signUp():
                 error = 'Username is required.'
             elif len(username)<5:
                 error = 'Username should be at least 5 characters long'
-            elif username.isspace()==True:
+            elif ' ' in username:
                 error = 'Uername cannot contain spaces, use underscore instead'
             elif not password:
                 error = 'Password is required.'
