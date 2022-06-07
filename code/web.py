@@ -32,9 +32,9 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 def get_dbConn():
     if 'dbConn' not in g:
         myFile = open('dbConfig.txt')
-        connStr = myFile.readline()
-        g.dbConn = connect(database="postgres", user="postgres", password="Always30Points", host="104.168.68.237",port="5432")
-
+        txt = myFile.readline()
+        connJson = json.loads(txt)
+        g.dbConn = connect(database=connJson['database'], user=connJson['user'], password=connJson['password'], host=connJson['host'],port=connJson['port'])
     return g.dbConn
 
 
