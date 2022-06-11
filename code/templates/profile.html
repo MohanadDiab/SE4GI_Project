@@ -1,6 +1,6 @@
 {% extends 'base_logged_in.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block rel %}
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/nicepage.css') }}" media="screen">
@@ -10,13 +10,14 @@
 
 {% block body %}
   <body class="u-body u-xl-mode">
+
     <section class="u-align-left u-clearfix u-image u-shading u-section-1" src="" data-image-width="1280" data-image-height="853" id="sec-dff9">
       <div >
         <h1 class="u-text u-text-default u-title u-text-1">Welcome {{user_name}}</h1>
         <p class="u-large-text u-text u-text-variant u-text-2">Welcome to your profile, please choose the action you want to execute:</p>
     </div>
     <div>
-        <a href="" class="u-btn u-button-style u-palette-2-base u-btn-1">My requests</a>
+        <a href="/myRequests" class="u-btn u-button-style u-palette-2-base u-btn-1">My requests</a>
         <a href="/changepw" class="u-btn u-button-style u-palette-2-base u-btn-1">Change password</a>
         <a href="/logout" class="u-btn u-button-style u-palette-2-base u-btn-1">Sign out!</a>
     </div>

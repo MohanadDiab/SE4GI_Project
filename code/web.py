@@ -8,8 +8,6 @@ from flask import (
 
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from werkzeug.exceptions import abort
-
 from psycopg2 import (
     connect
 )
@@ -189,6 +187,21 @@ def about():
 def profile():
     if 'user_id' in session:
         return render_template('profile.html',user_name=session['user_id'])
+    else:
+        return render_template('blocked.html')
+    
+@app.route('/myRequests',methods=['GET',])
+def myRequests():
+    if 'user_id' in session:
+        conn = get_dbConn()
+        cur = conn.cursor()
+        cur.execute(
+            'SELECT "3_Dwelling_type","4_Number_of_trees","5_Distance_to_major_","6_Decibel_reading","8_Age_of_Property","9_Quality_of_housing" FROM "Housing Data" WHERE ec5_uuid = %s', (session['user_id'],)
+        )
+        requests = cur.fetchall()
+        cur.close()
+        conn.commit()
+        return render_template('my_requests.html',requests=requests)
     else:
         return render_template('blocked.html')
     
@@ -378,7 +391,7 @@ def submitData():
     print(img_path)
     print(photo, ht, _not)
     sql = 'insert into "Housing Data" (ec5_uuid,"2_Take_photo","3_Dwelling_type","4_Number_of_trees","5_Distance_to_major_","6_Decibel_reading","8_Age_of_Property","9_Quality_of_housing","1_Location.latitude","1_Location.longitude")values(\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'-1\',\'{}\',\'{}\')'.format(
-        uuid4(), photo, ht, _not, d2mr, dr, aop, lat, lng)
+        session['user_id'], photo, ht, _not, d2mr, dr, aop, lat, lng)
     cur.execute(sql)
     conn.commit()
     return '<script>alert("Uploaded successfully!");window.location.href = "./map_4";</script>'

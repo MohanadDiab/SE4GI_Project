@@ -1,0 +1,57 @@
+{% extends 'base_logged_in.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block rel %}
+<style>
+    .fill-screeen{
+        height: 100vh;
+        width: 100vw;
+        background-color: #f1f1f1;
+    }
+    .flex-container {
+    margin: 5%;
+      display: flex;
+      flex-wrap: nowrap;
+      background-color:#eeeeee;
+      align-items: center;
+      
+    }
+    
+   
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/nicepage.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Home.css') }}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+{%endblock%}
+
+{% block body %}
+<body>
+    <div class="fill-screen">
+    {% for request in requests%}
+        <section class="flex-container">
+            <img src="{{ url_for('static',filename='img/Town house.svg')}}"  style=" padding:20px;height: 250px;px;float:right">
+            <section class="box-1" style="align-items:left;padding-left: 20px;">
+                <h4 class="u-text u-text-5"><b>Request Info:</b></h4>
+                <p class="u-text u-text-6">Dwelling type: {{request[0]}}</p>
+                <p class="u-text u-text-6">Number of trees: {{request[1]}}</p>
+                <p class="u-text u-text-6">Distance to major road: {{request[2]}} </p>
+                <p class="u-text u-text-6">Decibel reading: {{request[3]}} </p>
+                <p class="u-text u-text-6">Age of property: {{request[4]}} </p>
+                <p style="color: red"class="u-text u-text-6">Predicted quality: {{request[5]}}</p>
+
+                </section>
+                <div style="flex:10"></div>
+                <section>
+                <a href="/map_4" style="margin:40px" class="u-btn u-button-style u-palette-2-base u-btn-1">Go to map !</a>
+                <a href="/delete_entry" style="margin:40px" class="u-btn u-button-style u-palette-2-base u-btn-1">Delete entry</a>
+        </section>
+        </section>
+       
+    {%endfor%}
+</section>
+</body>
+{%endblock%}
+
+
+
