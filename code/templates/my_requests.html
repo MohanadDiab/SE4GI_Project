@@ -4,20 +4,26 @@
 
 {% block rel %}
 <style>
-    .fill-screeen{
-        height: 100vh;
-        width: 100vw;
-        background-color: #f1f1f1;
-    }
+    
     .flex-container {
-    margin: 5%;
+        
+        margin: 5%;
       display: flex;
       flex-wrap: nowrap;
       background-color:#eeeeee;
       align-items: center;
       
     }
-    
+    .fill-section {
+        min-height: 100vh;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    .fill-screen {
+        min-height: 100vh;
+        
+    }
    
     </style>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/nicepage.css') }}" media="screen">
@@ -28,9 +34,11 @@
 {% block body %}
 <body>
     <div class="fill-screen">
+    {% if requests%}
     {% for request in requests%}
+    <section class="fill-screen">
         <section class="flex-container">
-            <img src="{{ url_for('static',filename='img/Town house.svg')}}"  style=" padding:20px;height: 250px;px;float:right">
+            <img src="{{ url_for('static',filename='img/Town house.svg')}}"  style=" padding:20px ;height: 250px; float:right">
             <section class="box-1" style="align-items:left;padding-left: 20px;">
                 <h4 class="u-text u-text-5"><b>Request Info:</b></h4>
                 <p class="u-text u-text-6">Dwelling type: {{request[0]}}</p>
@@ -44,11 +52,22 @@
                 <div style="flex:10"></div>
                 <section>
                 <a href="/map_4" style="margin:40px" class="u-btn u-button-style u-palette-2-base u-btn-1">Go to map !</a>
-                <a href="/delete_entry" style="margin:40px" class="u-btn u-button-style u-palette-2-base u-btn-1">Delete entry</a>
+                <form method="POST">
+                <input type="hidden" value={{request[6]}} name="coord" >
+                <input type="submit" value="Delete entry" style="margin:40px" class="u-btn u-button-style u-palette-2-base u-btn-1">
+                </form>
+            </section>
         </section>
-        </section>
-       
+    </section>
     {%endfor%}
+    {%else%}
+    <section class="fill-section">
+        <img src="{{ url_for('static',filename='img/Town house.svg')}}"  style=" padding:20px ;height: 250px; float:right">
+        
+            <h1 style="justify-content: center;padding:5%">Oops! <br> looks like you have no entries at the moment!</h1> 
+        
+    </section>
+    {%endif%}
 </section>
 </body>
 {%endblock%}

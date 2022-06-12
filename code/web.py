@@ -190,13 +190,24 @@ def profile():
     else:
         return render_template('blocked.html')
     
-@app.route('/myRequests',methods=['GET',])
+@app.route('/myRequests',methods=['GET','POST'])
 def myRequests():
     if 'user_id' in session:
+        if request.method == 'POST':
+            northing = request.form['coord']
+            conn = get_dbConn()
+            cur = conn.cursor()
+            cur.execute(
+                'DELETE FROM "Housing Data" WHERE ec5_uuid = %s AND "1_Location.latitude" = %s ',(session['user_id'],northing,)
+                )
+            cur.close()
+            conn.commit()
+            return redirect(url_for('myRequests'))
+            
         conn = get_dbConn()
         cur = conn.cursor()
         cur.execute(
-            'SELECT "3_Dwelling_type","4_Number_of_trees","5_Distance_to_major_","6_Decibel_reading","8_Age_of_Property","9_Quality_of_housing" FROM "Housing Data" WHERE ec5_uuid = %s', (session['user_id'],)
+            'SELECT "3_Dwelling_type","4_Number_of_trees","5_Distance_to_major_","6_Decibel_reading","8_Age_of_Property","9_Quality_of_housing","1_Location.latitude" FROM "Housing Data" WHERE ec5_uuid = %s', (session['user_id'],)
         )
         requests = cur.fetchall()
         cur.close()
