@@ -1,6 +1,6 @@
 {% extends 'base_logged_in.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}My requests{% endblock %}
 
 {% block rel %}
 <style>
@@ -33,10 +33,10 @@
 
 {% block body %}
 <body>
-    <div class="fill-screen">
+    <section class="fill-screen">
     {% if requests%}
     {% for request in requests%}
-    <section class="fill-screen">
+    
         <section class="flex-container">
             <img src="{{ url_for('static',filename='img/Town house.svg')}}"  style=" padding:20px ;height: 250px; float:right">
             <section class="box-1" style="align-items:left;padding-left: 20px;">
@@ -58,7 +58,6 @@
                 </form>
             </section>
         </section>
-    </section>
     {%endfor%}
     {%else%}
     <section class="fill-section">
