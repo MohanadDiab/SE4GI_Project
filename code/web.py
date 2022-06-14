@@ -1,7 +1,5 @@
 import os
 import time
-from uuid import uuid4
-
 from flask import (
     Flask, render_template, request, redirect, flash, url_for, session, g
 )
@@ -336,7 +334,14 @@ def map_4():
         return render_template('map_4.html', title='Housing Data Adding', result=result)
     else:
         return render_template('blocked.html')
+    
+@app.route('/guide')
+def guide():
+    if 'user_id' in session: 
+        return render_template('guide.html')
 
+    else:
+        return render_template('blocked.html')
 
 # line chart
 @app.route('/chart_1')
