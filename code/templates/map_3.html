@@ -29,9 +29,9 @@
     {% for item in result %}
     var name = '{{item[5]}}';
     name = name.trim();
-    L.marker([{{item[11]}}, {{item[12]}}],{icon:L.icon({iconUrl: './static/img/'+name+'.svg',iconSize: [25, 25],})}).addTo(map)    {% endfor %}
+    L.marker([{{item[11]}}, {{item[12]}}],{icon:L.icon({iconUrl: './static/img/'+name+'.svg',iconSize: [25, 25]}),tags: ['{{item[5]}}']}).addTo(map)    {% endfor %}
     L.control.tagFilterButton({
-        data: ['Town House', 'Single storey ','Apartment ','Semi-Detached ']
+        data: ['Town House', 'Single storey','Apartment','Semi-Detached']
     }).addTo( map );
 
 </script>
