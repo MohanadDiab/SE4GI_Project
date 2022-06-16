@@ -19,11 +19,6 @@ df=pd.json_normalize(data['data']['entries'])
 df=df.drop(['7_Distance_to_shops'],axis=1)
 
 # setup db connection (generic connection path to the server Li setup: 'postgresql://user:password@localhost:5432/mydatabase')
-#hostname='104.168.68.237'
-#database='postgres'
-#username='postgres'
-#pwd='Always30Points'
-#port_id=5432
 engine = create_engine('postgresql://postgres:Always30Points@104.168.68.237:5432/postgres')
 
 # export the data frame into the databse

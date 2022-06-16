@@ -39,7 +39,7 @@ cur.execute(cleanup)
     
 cur.execute(command)
     
-cur.execute(sqlCommands, ('Giuseppe', '3ety3e7'))
+cur.execute(sqlCommands, ('testuser', '12345'))
 userId = cur.fetchone()[0]
 print(cur.fetchall())
 cur.close()
