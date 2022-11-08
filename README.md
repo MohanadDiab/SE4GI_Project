@@ -28,7 +28,7 @@ allow users to fully use the site as intended by the development team.
 There's an extra page that allows the user to enter their profile, not
 mentioned in the graph in this version.
 
-![](vertopal_948326db09924f1e8fc32266397611fc/media/image1.JPG){width="6.0in"
+![](SE4GI_Project/Documentation/web app guide/vertopal_948326db09924f1e8fc32266397611fc/media/image1.JPG){width="6.0in"
 height="6.007638888888889in"}
 
 1.  **The visitors section:**
@@ -43,7 +43,7 @@ through the about us page.
 The home page displays a user friendly user interface to allow the user
 to navigate to the sign in screen.
 
-![](vertopal_948326db09924f1e8fc32266397611fc/media/image2.jpeg){width="6.0in"
+![](/repository/Documentation/web app guide/vertopal_948326db09924f1e8fc32266397611fc/media/image2.jpeg){width="6.0in"
 height="3.640972222222222in"}
 
 1.  **The sign in page:**
