@@ -28,7 +28,7 @@ allow users to fully use the site as intended by the development team.
 There's an extra page that allows the user to enter their profile, not
 mentioned in the graph in this version.
 
-![]([SE4GI_Project/Documentation/web app guide/vertopal_948326db09924f1e8fc32266397611fc/media/image1.JPG](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image1.JPG)){width="6.0in"
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image1.JPG){width="6.0in"
 height="6.007638888888889in"}
 
 1.  **The visitors section:**
