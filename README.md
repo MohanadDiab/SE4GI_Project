@@ -28,8 +28,7 @@ allow users to fully use the site as intended by the development team.
 There's an extra page that allows the user to enter their profile, not
 mentioned in the graph in this version.
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image1.JPG){width="6.0in"
-height="6.007638888888889in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image1.JPG)
 
 1.  **The visitors section:**
 
@@ -43,22 +42,19 @@ through the about us page.
 The home page displays a user friendly user interface to allow the user
 to navigate to the sign in screen.
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image2.JPG){width="6.0in"
-height="3.640972222222222in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image2.JPG)
 
 1.  **The sign in page:**
 
 The sign in page allows the user to sign in using their credentials.
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image3.jpeg){width="6.0in"
-height="3.640972222222222in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image3.jpeg)
 
 2.  **The sign up page:**
 
 The sign up page allows the users to create a new account.
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image4.jpeg){width="6.0in"
-height="3.7194444444444446in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image4.jpeg)
 
 3.  **The about us page:**
 
@@ -66,8 +62,7 @@ This page offers some info about the site and its components/features,
 it also allows the user to view the open source data used in the
 project.
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image5.jpeg){width="3.0833333333333335in"
-height="7.620137795275591in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image5.jpeg)
 
 1.  **The users section:**
 
@@ -85,48 +80,41 @@ and their respective base template will render again.
 The home page displays a user friendly user interface to allow the user
 to navigate to the sign in screen.
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image6.jpeg){width="6.0in"
-height="3.640972222222222in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image6.jpeg)
 
 2.  **The maps page:**
 
 The maps page displays a user friendly user interface to allow the user
 to navigate to the maps screen.
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image7.jpeg){width="6.0in"
-height="5.4118055555555555in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image7.jpeg)
 
 3.  **The graphs page:**
 
 The graphs page displays a user friendly user interface to allow the
 user to navigate to the graphs screen.
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image8.jpeg){width="6.0in"
-height="3.001388888888889in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image8.jpeg)
 
 4.  **The profile page:**
 
 The profile page displays a user friendly user interface to allow the
 user to navigate to their profile screen.
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image9.jpeg){width="6.0in"
-height="3.1284722222222223in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image9.jpeg)
 
 5.  **The about us page:**
 
 The home page displays a user friendly user interface to allow the user
 to navigate to the maps screen.
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image10.jpeg){width="3.138888888888889in"
-height="7.757439851268591in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image10.jpeg)
 
 **Extras:**
 
 In this section are extra screens that display a sample of the maps and
 the graphs that the users are able to view.
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image11.jpeg){width="6.0in"
-height="3.5694444444444446in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image11.jpeg)
 
-![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image12.jpeg){width="6.0in"
-height="3.5284722222222222in"}
+![](https://github.com/MohanadDiab/SE4GI_Project/blob/39d05e4de06a42817d598a3746acf5ff2fe3e88b/Documentation/web%20app%20guide/vertopal_948326db09924f1e8fc32266397611fc/media/image12.jpeg)
